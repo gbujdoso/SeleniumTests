@@ -4,12 +4,16 @@ pipeline {
         stage('build') {
             steps {
                 echo "Build tests"
-                def mavenDir = "c:\\apache-maven-3.8.6\\bin\\"
-                def projectDir = $WORKSPACE
-                dir () {
+                script {
+                    def mavenDir = "c:\\apache-maven-3.8.6\\bin\\"
+                    def projectDir = $WORKSPACE
+                    env.mavenDir = mavenDir
+                    env.projectDir = projectDir
+                }
+                dir ($projectDir) {
                     echo "Execute maven"
                     bat script:"mvn -v"
-                    echo "${projectDir}"
+                    echo "${env.projectDir}"
                 }
 
             }
