@@ -1,5 +1,3 @@
-/* Requires the Docker Pipeline plugin */
-/*
 pipeline {
     agent any
     stages {
@@ -7,17 +5,19 @@ pipeline {
             steps {
                 echo "Build tests"
                 def mavenDir = "c:\\apache-maven-3.8.6\\bin\\"
-                def projectDir = ""
+                def projectDir = $WORKSPACE
                 dir () {
                     echo "Execute maven"
                     bat script:"mvn -v"
+                    echo "${projectDir}"
                 }
 
             }
         }
     }
 }
-*/
+
+/* cannot use Windows host and Linux docker, bug: https://issues.jenkins.io/browse/JENKINS-60473
 pipeline {
     agent {
         docker {
@@ -33,3 +33,4 @@ pipeline {
         }
     }
 }
+*/
