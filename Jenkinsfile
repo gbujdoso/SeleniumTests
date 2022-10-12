@@ -12,8 +12,10 @@ pipeline {
                 }
                 dir (env.projectDir) {
                     echo "Execute maven"
-                    bat script:"${env.mavenDir}\\mvn compile"
                     echo "${env.projectDir}"
+                    bat script:"${env.mavenDir}\\mvn compile"
+                    bat script:"${env.mavenDir}\\mvn test"
+
                 }
 
             }
