@@ -10,7 +10,7 @@ pipeline {
                     env.mavenDir = mavenDir
                     env.projectDir = projectDir
                 }
-                dir ($projectDir) {
+                dir (env.projectDir) {
                     echo "Execute maven"
                     bat script:"mvn -v"
                     echo "${env.projectDir}"
