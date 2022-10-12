@@ -6,7 +6,7 @@ pipeline {
                 echo "Build tests"
                 script {
                     def mavenDir = "c:\\apache-maven-3.8.6\\bin\\"
-                    def projectDir = $WORKSPACE
+                    def projectDir = ${env.WORKSPACE}
                     env.mavenDir = mavenDir
                     env.projectDir = projectDir
                 }
