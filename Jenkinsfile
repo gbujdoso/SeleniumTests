@@ -4,8 +4,11 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                dir "c:\\apache-maven-3.8.6\\bin\\"
                 echo "Build tests"
+                dir ("c:\\apache-maven-3.8.6\\bin\\") {
+                    echo "Execute maven"
+                }
+
             }
         }
     }
